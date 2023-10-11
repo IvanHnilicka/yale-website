@@ -1,0 +1,49 @@
+<header class="z-50 h-24 w-screen mb-32 p-2 fixed flex grow items-center bg-indigo drop-shadow-2xl sm:h-28 sm:px-6">
+    <!-- Logo y nombre de la institucion -->
+    <div class="w-1/2 px-4 flex grow justify-between items-center">
+        <div class="flex items-center">
+            <a href="">
+                <img draggable="false" class="h-16 w-18 xl:h-20" src="../../assets/Yale_School_of_Art_Logo.png" alt="Logo">
+            </a>
+            <a class="w-2/3 max-w-[150px] text-2xl ml-6 text-white font-bold sm:text-2xl sm:max-w-[200px] md:text-3xl xl:max-w-full xl:text-4xl" href="">Yale School of Art</a>
+        </div>
+        <img class="h-6 w-6 md:mr-4 lg:hidden active:animate-spin" src="../../assets/hamburger.svg" alt="Menu" *ngIf="!menuMovil" (click)="menuMovil = !menuMovil">
+        <img class="h-6 w-6 md:mr-4 lg:hidden active:animate-shrink" src="../../assets/x-close.svg" alt="Menu" *ngIf="menuMovil" (click)="menuMovil = !menuMovil">
+    </div>
+
+
+    <!-- Contenedor de links -->
+    <div class="w-2/3 hidden px-14 justify-between items-center text-md text-white font-semibold lg:flex lg:text-lg xl:text-xl">
+        <a href="" class="hover:text-darkYellow">Inicio</a>
+        <a href="#" class="text-center hover:text-darkYellow">Sobre Nosotros</a>
+        <a href="#" class="hover:text-darkYellow">Carreras</a>
+        <a href="#" class="hover:text-darkYellow">Galería</a>
+        <a href="#" class="hover:text-darkYellow">Contacto</a>
+    </div>
+</header>
+
+
+<body class="h-full pt-24 sm:pt-28">
+    <!-- Noticias -->
+    <div class="h-[160px] w-screen my-2 flex gap-8 grow justify-around items-center md:my-4 xl:gap-8 xl:h-72">
+        <button class="h-full w-1/12 flex justify-center items-center active:animate-shrink active:text-xl" (click)="slideBack(); resetTimer()"> 
+            <img class="w-1/2 h-full sm:w-1/3 lg:w-1/6" src="../../assets/chevron-left.svg" alt="&lt;">
+        </button>
+        <img draggable="false" class="w-[200px] h-4/5 swiper-img md:w-[320px] md:h-full xl:w-3/12" src="../../assets/noticia.jpg" alt="Noticia">
+        <img draggable="false" class="hidden h-full w-[320px] swiper-img md:block xl:w-3/12" src="../../assets/noticia_2.jpg" alt="Noticia">
+        <img draggable="false" class="hidden h-full w-3/12 swiper-img xl:block" src="../../assets/noticia_3.jpg" alt="Noticia">
+        <button class="h-full w-1/12 flex justify-center items-center active:animate-shrink active:text-xl" (click)="slideForward(); resetTimer()">
+            <img class="w-1/2 h-full sm:w-1/3 lg:w-1/6" src="../../assets/chevron-right.svg" alt="&gt;">
+        </button>
+    </div>
+
+    
+    <!-- Menu de navegacion mobil -->
+    <div class="w-full h-full flex flex-col gap-12 justify-center text-center text-xl text-white font-bold absolute top-0 bg-indigo/80 lg:hidden" *ngIf="menuMovil">
+        <a href="" class="active:text-darkYellow">Inicio</a>
+        <a href="#" class="active:text-darkYellow">Sobre Nosotros</a>
+        <a href="#" class="active:text-darkYellow">Carreras</a>
+        <a href="#" class="active:text-darkYellow">Galería</a>
+        <a href="#" class="active:text-darkYellow">Contacto</a>
+    </div>
+</body>
