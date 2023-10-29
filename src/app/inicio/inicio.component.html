@@ -14,7 +14,7 @@
     
     
         <!-- Contenedor de links -->
-        <div class="w-2/3 hidden px-16 gap-20 justify-end items-center text-lg text-white font-semibold xl:text-2xl lg:flex">
+        <div class="w-2/3 hidden px-44 gap-20 justify-end items-center text-lg text-white font-semibold xl:text-2xl lg:flex">
             <a href="" class="hover:text-darkYellow">Inicio</a>
             <a href="#" class="text-center hover:text-darkYellow">Sobre Nosotros</a>
             <a href="#" class="hover:text-darkYellow">Carreras</a>
@@ -38,67 +38,71 @@
         </div>
         
         <!-- Noticias -->
-        <div class="h-[160px] w-screen py-4 flex flex-grow justify-around items-center xl:gap-8 xl:h-72">
-            <button class="h-full w-1/12 flex justify-center items-center active:animate-shrink active:text-xl" (click)="slideBack(); resetTimer()"> 
-                <img class="w-1/2 h-full sm:w-1/3 lg:w-1/6" src="../../assets/chevron-left.svg" alt="&lt;">
+        <div class="h-[160px] w-screen py-4 flex sm:px-16 xl:h-72">
+            <button class="flex justify-center items-center active:animate-shrink active:text-xl" (click)="slideBack(); resetTimer()"> 
+                <img class="w-4 mx-2 sm:w-10 sm:mx-12" src="../../assets/chevron-left.svg" alt="&lt;">
             </button>
-            <img draggable="false" class="w-[250px] h-full swiper-img md:w-[320px] xl:w-3/12" src="../../assets/noticia.jpg" alt="Noticia">
-            <img draggable="false" class="hidden h-full w-[320px] swiper-img md:block xl:w-3/12" src="../../assets/noticia_2.jpg" alt="Noticia">
-            <img draggable="false" class="hidden h-full w-3/12 swiper-img xl:block" src="../../assets/noticia_3.jpg" alt="Noticia">
-            <button class="h-4/5 w-1/12 flex justify-center items-center active:animate-shrink active:text-xl" (click)="slideForward(); resetTimer()">
-                <img class="w-1/2 h-4/5 sm:w-1/3 lg:w-1/6" src="../../assets/chevron-right.svg" alt="&gt;">
+            <!-- Contenedor de imagenes -->
+            <div class="w-full h-full flex justify-center gap-4 sm:justify-between">
+                <img draggable="false" class="w-[250px] h-full swiper-img md:w-[320px] xl:w-4/12" src="../../assets/noticia.jpg" alt="Noticia">
+                <img draggable="false" class="hidden h-full w-[320px] swiper-img md:block xl:w-4/12" src="../../assets/noticia_2.jpg" alt="Noticia">
+                <img draggable="false" class="hidden h-full w-4/12 swiper-img xl:block" src="../../assets/noticia_3.jpg" alt="Noticia">
+            </div>
+            <button class="flex justify-center items-center active:animate-shrink active:text-xl" (click)="slideBack(); resetTimer()"> 
+                <img class="w-4 mx-2 sm:w-10 sm:mx-12" src="../../assets/chevron-right.svg" alt="&lt;">
             </button>
         </div>
         
-
-
+        
         <!-- Eventos -->
-        <div class="py-8 px-8 sm:px-[11.5rem]">
+        <div class="py-8 px-9 sm:px-[11.5rem]">
             <h1 class="text-2xl font-bold text-savoyBlue sm:text-4xl">Proximos Eventos</h1>
             <div class="w-full h-[2px] bg-savoyBlue my-4"></div>
             
             <!-- Contenedor de Eventos -->
-            <div class="w-full h-full flex flex-col justify-between gap-6 sm:flex-row">
+            <div class="w-full h-full flex flex-col justify-between gap-4 sm:flex-row">
+                
                 <!-- Evento -->
-                <div class="h-20 w-full flex sm:w-1/3 sm:pl-3 sm:min-h-[105px]">
-                    <div class="w-1/4 bg-white text-xl text-indigo font-bold flex flex-col items-center sm:w-1/4 sm:text-2xl">
+                <div class="h-20 w-full flex sm:w-1/3 sm:min-h-[105px]">
+                    <div class="w-1/4 bg-white text-xl text-indigo font-bold flex flex-col items-center sm:max-w-[92px] sm:w-1/4 sm:text-2xl">
                         <h1 class="h-2/3 w-full flex items-center justify-center font-bold text-2xl">25</h1>
                         <h1 class="h-1/3 w-full flex items-center justify-center bg-darkYellow">Nov</h1>
                     </div>
-                    <div class="h-full w-3/4 max-w-[380px]  px-4 flex flex-col gap-0 text-md sm:min-h-[105px] sm:w-full sm:text-xl sm:gap-4 sm:pt-2">
-                        <h1 class="h-2/3 w-full flex items-center font-bold">Festival Universitario de las Artes </h1>
+                    <div class="w-3/4 max-w-[380px] pl-4 flex flex-col gap-0 text-md sm:w-full sm:text-xl">
+                        <h1 class="h-2/3 w-full flex items-center font-bold">Festival Universitario de las Artes</h1>
                         <h1 class="h-1/3 w-full flex items-center font-semibold">16:30</h1>
                     </div>
                 </div>
                 
                 <!-- Evento -->
-                <div class="h-20 w-full flex sm:w-1/3 sm:pl-3 sm:min-h-[105px]">
-                    <div class="w-1/4 bg-white text-xl text-indigo font-bold flex flex-col items-center sm:w-1/4 sm:text-2xl">
+                <div class="h-20 w-full flex sm:w-1/3 sm:min-h-[105px]">
+                    <div class="w-1/4 bg-white text-xl text-indigo font-bold flex flex-col items-center sm:max-w-[92px] sm:w-1/4 sm:text-2xl">
                         <h1 class="h-2/3 w-full flex items-center justify-center font-bold text-2xl">27</h1>
                         <h1 class="h-1/3 w-full flex items-center justify-center bg-darkYellow">Nov</h1>
                     </div>
-                    <div class="h-full w-3/4 max-w-[380px] px-4 flex flex-col gap-0 text-md sm:min-h-[105px] sm:w-full sm:text-xl sm:gap-4 sm:pt-2">
+                    <div class="w-3/4 max-w-[380px] pl-4 flex flex-col gap-0 text-md sm:w-full sm:text-xl">
                         <h1 class="h-2/3 w-full flex items-center font-bold">Alebrijes Iluminados</h1>
                         <h1 class="h-1/3 w-full flex items-center font-semibold">20:30</h1>
                     </div>
                 </div>
                 
                 <!-- Evento -->
-                <div class="h-20 w-full flex sm:w-1/3 sm:pl-3 sm:min-h-[105px]">
-                    <div class="w-1/4 bg-white text-xl text-indigo font-bold flex flex-col items-center sm:w-1/4 sm:text-2xl">
+                <div class="h-20 w-full flex sm:w-1/3 sm:min-h-[105px]">
+                    <div class="w-1/4 bg-white text-xl text-indigo font-bold flex flex-col items-center sm:max-w-[92px] sm:w-1/4 sm:text-2xl">
                         <h1 class="h-2/3 w-full flex items-center justify-center font-bold text-2xl">30</h1>
                         <h1 class="h-1/3 w-full flex items-center justify-center bg-darkYellow">Nov</h1>
                     </div>
-                    <div class="h-full w-3/4 max-w-[380px] px-4 flex flex-col gap-0 text-md sm:min-h-[105px] sm:w-full sm:text-xl sm:gap-4 sm:pt-2">
-                        <h1 class="h-2/3 w-full flex items-center font-bold">El Arte Para Compartir</h1>
+                    <div class="w-3/4 max-w-[380px] pl-4 flex flex-col gap-0 text-md sm:w-full sm:text-xl">
+                        <h1 class="h-2/3 w-full flex items-center font-bold">El Arte para Compartir</h1>
                         <h1 class="h-1/3 w-full flex items-center font-semibold">17:30</h1>
                     </div>
                 </div>
-
             </div>
-        </div>
-
+        </div>     
+        
     </div>
     
     <app-footer></app-footer>
 </body>
+
+
