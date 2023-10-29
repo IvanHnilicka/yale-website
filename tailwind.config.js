@@ -7,14 +7,15 @@ module.exports = {
     extend: {
       colors: {
         indigo: '#113F69',
-        savoyBlue: '#495FBF',
+        savoyBlue: '#3c50aa',
         davysGray: '#525252',
         darkYellow: '#FFC234',
-        darkGray: '#1c1e27'
+        darkGray: '#1c1e27',
+        background: '#E6E6E6'
       }
     },
     animation: {
-      shrink: 'shrink 0.1s'
+      shrink: 'shrink 0.1s',
     },
     keyframes: {
       shrink: {
