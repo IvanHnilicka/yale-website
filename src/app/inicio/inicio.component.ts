@@ -24,7 +24,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
   menuMovil = false;
 
   // Arreglo que guarda el link de las imagenes
-  // TODO: guardar imagenes en servidor para obtenerlas de ahi
+  // TODO: guardar imagenes en servidor y descargarlas desde dicho servidor
   imagenes: string[] = ['http://localhost:4200/assets/noticia.jpg', 'http://localhost:4200/assets/noticia_2.jpg', 'http://localhost:4200/assets/noticia_3.jpg', 'http://localhost:4200/assets/noticia_4.jpg', 'http://localhost:4200/assets/noticia_5.jpg'];
 
   carrusel: HTMLImageElement[] = [];

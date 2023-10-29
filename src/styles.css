@@ -5,6 +5,7 @@
 * {
   scroll-behavior: smooth;
   user-select: none;
+  max-width: 100%;
 }
 
 button {
