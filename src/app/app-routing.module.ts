@@ -15,7 +15,8 @@ const routes: Routes = [
   { path: 'pintura', component: PinturaComponent },
   { path: 'fotografia', component: FotografiaComponent },
   { path: 'escultura', component: EsculturaComponent },
-  { path: '**', component: NotFoundComponent },
+  { path: '404', component: NotFoundComponent},
+  { path: '**', redirectTo: '404' },
 ];
 
 @NgModule({

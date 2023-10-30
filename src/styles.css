@@ -4,6 +4,7 @@
 
 * {
   scroll-behavior: smooth;
+  max-width: 100%;
 }
 
 html, body {
