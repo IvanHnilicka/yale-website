@@ -16,6 +16,7 @@ module.exports = {
     },
     animation: {
       shrink: 'shrink 0.1s',
+      fade: 'fade 6s linear infinite'
     },
     keyframes: {
       shrink: {
@@ -23,6 +24,12 @@ module.exports = {
         '50%': { transform: 'scale(0.92)' },
         '100%': { transform: 'scale(1)' },
       },
+      fade: {
+        '0%': { opacity: '0' },
+        '20%': { opacity: '1' },
+        '90%': { opacity: '1' },
+        '100%': { opacity: '0' },
+      }
     },
   },
   plugins: [],

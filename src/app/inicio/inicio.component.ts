@@ -81,8 +81,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
       (this.carrusel[i].children.item(0) as HTMLImageElement).src = this.imagenes[(i + index + 1) % this.imagenes.length].src;
       (this.carrusel[i].children.item(1) as HTMLHeadElement).textContent = this.imagenes[(i + index + 1) % this.imagenes.length].description;
     }
-  }
-  
+  }  
 
   slideBack(): void {
     let src = this.imagenes.map((img) => {
@@ -101,22 +100,28 @@ export class InicioComponent implements OnInit, AfterViewInit {
       (this.carrusel[i].children.item(0) as HTMLImageElement).src = this.imagenes[(index + (i - 1)) % this.imagenes.length].src;
       (this.carrusel[i].children.item(1) as HTMLHeadElement).textContent = this.imagenes[(index + (i - 1)) % this.imagenes.length].description;
     }
-  }  
+  }
 
 
-  // Funcion que cambia las imagenes cada 5 segundos
+  // Funcion que cambia las imagenes cada 6 segundos
   slider = setInterval(() => {
     this.slideForward();
-  }, 5000);
-
+  }, 6000);
 
   // Reinicia el delay si se cambian las noticias manualmente
   resetTimer(): void {
     clearInterval(this.slider);
+    this.carrusel[0].classList.remove('animate-fade');
+    this.carrusel[1].classList.remove('animate-fade');
+    this.carrusel[2].classList.remove('animate-fade');
+
     setTimeout(() => {
       this.slider = setInterval(() => {
         this.slideForward();
-      }, 5000);
+        this.carrusel[0].classList.add('animate-fade');
+        this.carrusel[1].classList.add('animate-fade');
+        this.carrusel[2].classList.add('animate-fade');
+      }, 6000);
     });
   }
 }
