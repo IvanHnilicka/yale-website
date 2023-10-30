@@ -1,0 +1,71 @@
+<body class="min-h-screen bg-background">
+    <!-- Header -->
+    <header class="z-50 h-20 w-screen px-4 sticky top-0 flex grow items-center bg-indigo drop-shadow-2xl sm:h-32 lg:px-0">
+        <!-- Logo y nombre de la institucion -->
+        <div class="w-1/3 px-5 flex grow justify-between items-center sm:px-10 lg:px-6 xl:px-10">
+            <div class="flex items-center xl:gap-5">
+                <a href="" class="hidden w-1/3 lg:flex lg:justify-center">
+                    <img draggable="false" class="h-16 w-18 xl:h-20" src="../../assets/Yale_School_of_Art_Logo.png" alt="Logo">
+                </a>
+                <a class="w-2/3 max-w-[200px] text-xl text-white font-bold sm:text-2xl sm:max-w-[250px] md:text-3xl xl:max-w-full xl:text-4xl" href="">Yale School of Art</a>
+            </div>
+            <img class="h-6 w-6 md:mr-4 xl:hidden active:animate-shrink" src="../../assets/hamburger.svg" alt="Menu" *ngIf="!menuMovil" (click)="menuMovil = !menuMovil">
+            <img class="h-6 w-6 md:mr-4 xl:hidden active:animate-shrink" src="../../assets/x-close.svg" alt="Menu" *ngIf="menuMovil" (click)="menuMovil = !menuMovil">
+        </div>
+    
+    
+        <!-- Contenedor de links -->
+        <div class="w-2/3 hidden px-40 gap-16 justify-end items-center text-lg text-white font-semibold xl:text-xl xl:flex xl:px-48 xl:gap-24" >
+            <a href="" class="hover:text-darkYellow">Inicio</a>
+            <a href="about" class="text-center hover:text-darkYellow">Sobre Nosotros</a>
+            <a href="#carreras" class="hover:text-darkYellow">Carreras</a>
+            <a href="foro" class="hover:text-darkYellow">Foro</a>
+            <a href="contacto" class="hover:text-darkYellow">Contacto</a>
+        </div>
+    </header>
+    
+    
+    <!-- Contenido -->
+    <div class="h-full w-screen">
+        <!-- Menu de navegacion mobil -->
+        <div class="w-full h-full flex flex-col gap-12 justify-center text-center text-xl text-white font-bold fixed z-20 bottom-0 bg-indigo/80" *ngIf="menuMovil">
+            <a href="" class="active:text-darkYellow">Inicio</a>
+            <a href="about" class="active:text-darkYellow">Sobre Nosotros</a>
+            <a href="#carreras" class="active:text-darkYellow">Carreras</a>
+            <a href="foro" class="active:text-darkYellow">Foro</a>
+            <a href="Contacto" class="active:text-darkYellow">Contacto</a>
+        </div>
+
+        <!-- Misión -->
+        <div class="px-10 md:px-14 md:my-2 lg:px-32 xl:px-[11.5rem]">
+            <h1 class="text-2xl pt-4 pb-2 font-bold text-savoyBlue sm:text-4xl md:py-4">Misión</h1>
+            <p class="text-sm md:text-lg xl:text-2xl">
+                La misión de la Escuela de Arte de Yale es brindar a los estudiantes instrucción práctica e intelectualmente informada en la práctica de una variedad de medios de artes visuales dentro del contexto de una universidad de artes liberales. Como parte de la primera institución de educación superior que integra con éxito una educación basada en el estudio en un marco pedagógico tan amplio, la Escuela de Arte de Yale tiene una larga y distinguida historia en la formación de artistas del más alto calibre. Un cuerpo docente de tiempo completo de artistas en activo junto con una muestra representativa diversa de artistas visitantes consumados colaboran para diseñar un programa y fomentar un entorno donde los talentos y perspectivas únicos de los estudiantes individuales puedan emerger y florecer.
+            </p>
+            <p class="text-sm mt-2 sm:mt-4 md:text-lg xl:text-2xl">              
+                La Escuela de Arte se basa en la creencia de que el arte es una fuerza fundamental en la cultura nacional e internacional, y que uno de los principales estándares por los cuales se juzga a las sociedades es la calidad, la libertad creativa, la visión crítica y la innovación formal y técnica de la arte visual que producen. La Escuela de Arte de Yale enseña a nivel de posgrado y pregrado y, en consecuencia, el alumnado está formado por aquellos cuyo enfoque principal o exclusivo es el arte, así como aquellos para quienes el arte es una parte esencial de un curso variado de investigación. Actualmente, la escuela ofrece títulos y especializaciones universitarias en las áreas de diseño gráfico, pintura/grabado, fotografía y escultura.
+            </p>
+        </div>
+        
+        <!-- Diversidad, Igualdad e Inclusión -->
+        <div class="px-10 my-6 md:px-14 md:my-10 lg:px-32 xl:px-[11.5rem]">
+            <h1 class="text-2xl pt-4 pb-2 font-bold text-savoyBlue sm:text-4xl md:py-4">Diversidad, Igualdad e Inclusión</h1>
+            <p class="text-sm md:text-lg xl:text-2xl">
+                Como institución líder de posgrado en arte y diseño contemporáneo, la Escuela de Arte de Yale reconoce su responsabilidad, privilegio y oportunidad de contribuir a la cultura y la creatividad en la sociedad en general. La Escuela se compromete a defender los principios de antirracismo, equidad, diversidad e inclusión como parte integral de su misión, y trabajará para lograr un entorno educativo que rechace la desigualdad, promueva la justicia social y amplifique las voces históricamente subrepresentadas.
+            </p>
+            <p class="text-sm mt-2 sm:mt-4 md:text-lg xl:text-2xl">               
+                La población matriculada actualmente en la Escuela de Arte se identifica como un 62% de estudiantes de color, el porcentaje más alto entre las escuelas profesionales de Yale. El 18,25% se identifica como género no binario, no confirmatorio o transgénero, y la población estudiantil internacional es el 29%. Nuestro objetivo es lograr un futuro vibrante, equitativo y sostenible para nuestra escuela que garantice la responsabilidad de nuestros valores y principios de pertenencia adoptados para todos los estudiantes, profesores, personal y ex alumnos. Este plan de unidad de misión crítica requiere que Yale enfrente historias violentas de las cuales nuestra institución continúa beneficiándose.
+            </p>
+            <p class="text-sm mt-4 md:text-lg xl:text-2xl">
+                Las acciones del primer año del plan se centraron en mejorar la experiencia dentro de los compromisos académico/curricular, administrativo y de vida estudiantil; ampliar las oportunidades de aprendizaje y capacitación para profesores y personal; y creación/aprobación de un puesto de Director de Equidad e Inclusión Sostenible dedicado a tiempo completo para servir a la Escuela. En el segundo año, la Escuela llevará a cabo la búsqueda a nivel nacional del Director mientras continúa reconstruyendo la comunidad e implementando acciones del Plan DEIB. Cuando sea posible, las contrataciones para puestos abiertos de profesores y personal se centrarán en una mayor diversidad, un objetivo general del plan plurianual.
+            </p>
+
+            <div class="w-full my-4 flex justify-center bg-indigo lg:mt-4 lg:mb-8">
+                <img class="lg:w-3/5 lg:max-h-[480px]" src="../../assets/diversidad.jpg" alt="Diversidad" draggable="false">
+            </div>
+        </div>
+    </div>
+    
+    <app-footer></app-footer>
+</body>
+

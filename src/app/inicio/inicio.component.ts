@@ -1,4 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { getDownloadURL, ref } from 'firebase/storage';
+import { DatabaseService } from '../database.service';
+
 
 @Component({
   selector: 'app-inicio',
@@ -8,10 +11,19 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 
 export class InicioComponent implements OnInit, AfterViewInit {
-  constructor() {}
+  constructor(private bdService: DatabaseService) {}
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.menuMovil = false;
+
+    let storage = this.bdService.getStorageRef()
+    
+    // Obtiene el link de descarga de las imagenes
+    for(let i = 0; i < 5; i++){
+      getDownloadURL(ref(storage, `noticias/noticia_${i + 1}.jpg`)).then(url => {
+        this.imagenes[i].src = url;
+      })
+    } 
   }
 
   ngAfterViewInit(): void {
@@ -20,39 +32,46 @@ export class InicioComponent implements OnInit, AfterViewInit {
       this.carrusel.push(imagen as HTMLImageElement);
     });
 
-    console.log(this.carrusel);    
+    this.carrusel[0].src = this.imagenes[0].src;
+    this.carrusel[1].src = this.imagenes[1].src;
+    this.carrusel[2].src = this.imagenes[2].src;
   }
 
   menuMovil = false;
 
-  // Arreglo que guarda el link de las imagenes
-  // TODO: guardar imagenes en servidor y descargarlas desde dicho servidor
-  imagenes2: string[] = ['http://localhost:4200/assets/noticia.jpg', 'http://localhost:4200/assets/noticia_2.jpg', 'http://localhost:4200/assets/noticia_3.jpg', 'http://localhost:4200/assets/noticia_4.jpg', 'http://localhost:4200/assets/noticia_5.jpg'];
+  cerrarMenuMovil() {
+    setTimeout(() => {
+      this.menuMovil = false;
+    }, 100);
+  }
 
+
+  // Arreglo que guarda el link de las imagenes
   carrusel: HTMLImageElement[] = [];
+  
+  // TODO: guardar imagenes en servidor para obtenerlas de ahi
   imagenes = [
     {
-      src: 'http://localhost:4200/assets/noticia.jpg',
+      src: '',
       description: 'Visita la galería de Arte ubicada dentro de la Universidad'
     },
     {
-      src: 'http://localhost:4200/assets/noticia_2.jpg',
+      src: '',
       description: 'Te invitamos a la conferencia de Arte Moderno con Alejandro Vargas'
     },
     {
-      src: 'http://localhost:4200/assets/noticia_3.jpg',
+      src: '',
       description: 'Publica tus obras en el foro oficial para compartir tu arte'
     },
     {
-      src: 'http://localhost:4200/assets/noticia_4.jpg',
+      src: '',
       description: 'Universidad se prepara para cierre de ciclo escolar'
     },
     {
-      src: 'http://localhost:4200/assets/noticia_5.jpg',
+      src: '',
       description: 'Invita a tus amigos y familiares al curso de pintura para principiantes'
     },
   ]
-
 
   // Funciones para cambiar las imagenes hacia adelante y hacia atras respectivamente
   slideForward(): void {

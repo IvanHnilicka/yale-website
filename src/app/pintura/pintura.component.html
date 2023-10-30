@@ -1,0 +1,63 @@
+<body class="min-h-screen bg-background">
+    <!-- Header -->
+    <header class="z-50 h-20 w-screen px-4 sticky top-0 flex grow items-center bg-indigo drop-shadow-2xl sm:h-32 lg:px-0">
+        <!-- Logo y nombre de la institucion -->
+        <div class="w-1/3 px-5 flex grow justify-between items-center sm:px-10 lg:px-6 xl:px-10">
+            <div class="flex items-center xl:gap-5">
+                <a href="" class="hidden w-1/3 lg:flex lg:justify-center">
+                    <img draggable="false" class="h-16 w-18 xl:h-20" src="../../assets/Yale_School_of_Art_Logo.png" alt="Logo">
+                </a>
+                <a class="w-2/3 max-w-[200px] text-xl text-white font-bold sm:text-2xl sm:max-w-[250px] md:text-3xl xl:max-w-full xl:text-4xl" href="">Yale School of Art</a>
+            </div>
+            <img class="h-6 w-6 md:mr-4 xl:hidden active:animate-shrink" src="../../assets/hamburger.svg" alt="Menu" *ngIf="!menuMovil" (click)="menuMovil = !menuMovil">
+            <img class="h-6 w-6 md:mr-4 xl:hidden active:animate-shrink" src="../../assets/x-close.svg" alt="Menu" *ngIf="menuMovil" (click)="menuMovil = !menuMovil">
+        </div>
+    
+    
+        <!-- Contenedor de links -->
+        <div class="w-2/3 hidden px-40 gap-16 justify-end items-center text-lg text-white font-semibold xl:text-xl xl:flex xl:px-48 xl:gap-24" >
+            <a href="" class="hover:text-darkYellow">Inicio</a>
+            <a href="about" class="text-center hover:text-darkYellow">Sobre Nosotros</a>
+            <a href="#carreras" class="hover:text-darkYellow">Carreras</a>
+            <a href="foro" class="hover:text-darkYellow">Foro</a>
+            <a href="contacto" class="hover:text-darkYellow">Contacto</a>
+        </div>
+    </header>
+    
+    
+    <!-- Contenido -->
+    <div class="h-full w-screen" id="carrera">
+        <!-- Menu de navegacion mobil -->
+        <div class="w-full h-full flex flex-col gap-12 justify-center text-center text-xl text-white font-bold fixed z-20 bottom-0 bg-indigo/80" *ngIf="menuMovil">
+            <a href="" class="active:text-darkYellow">Inicio</a>
+            <a href="about" class="active:text-darkYellow">Sobre Nosotros</a>
+            <a href="#carreras" class="active:text-darkYellow">Carreras</a>
+            <a href="foro" class="active:text-darkYellow">Foro</a>
+            <a href="contacto" class="active:text-darkYellow">Contacto</a>
+        </div>
+        
+        <!-- Descripcion -->
+        <div class="px-10 md:px-14 md:my-2 lg:px-32 xl:px-[11.5rem]">
+            <h1 class="text-2xl pt-4 pb-2 font-bold text-savoyBlue sm:text-4xl md:pt-4 md:pb-0">PINTURA</h1>
+            <!-- Descripcion -->
+            <div>
+                <h1 class="text-xl pb-2 font-bold text-savoyBlue sm:text-3xl md:py-4">Descripcion</h1>
+                <p class="text-sm text-justify mb-2 md:text-lg xl:text-xl">
+                    La instrucción en el programa tiene sus raíces en la investigación de la pintura como un género único con su propia sintaxis e historia complejas. Dentro de este entorno, el programa fomenta la diversidad de práctica e interpretación, innovación y experimentación.
+                </p>
+                <p class="text-sm text-justify mb-2 md:text-lg xl:text-xl xl:mb-4">                   
+                    Cada año se admiten aproximadamente veintiún estudiantes. El núcleo de la instrucción son las críticas individuales y grupales con profesores, críticos visitantes y artistas visitantes. Además, los estudiantes participan en una variedad de seminarios impartidos tanto por profesores como por críticos. El estudio del grabado está integrado en el programa de pintura y un estudiante puede concentrarse en pintura, grabado o una combinación de ambos.
+                </p>
+                <p class="text-sm text-justify mb-2 md:text-lg xl:text-xl xl:mb-4">
+                    Los estudiantes trabajan en estudios individuales de 300 pies cuadrados en 353 Crown Street, adyacente a Green Hall. Los estudiantes tienen acceso a un taller de grabado en el edificio de Crown Street, equipado con dos prensas de grabado y una prensa de litografía, una instalación de serigrafía totalmente equipada, así como recursos digitales disponibles en el estudio de impresión, en toda la escuela y en el Centro de Colaboración. Artes y Medios.
+                </p>
+            </div>
+
+            <div class="w-full my-4 flex justify-center bg-indigo lg:mt-4 lg:mb-8">
+                <img class="lg:w-3/5 lg:max-h-[480px]" src="../../assets/pintura_2.jpg" alt="Diseño Grafico" draggable="false">
+            </div>
+        </div>
+    </div>
+    
+    <app-footer></app-footer>
+</body>

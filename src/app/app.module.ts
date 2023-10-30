@@ -11,13 +11,25 @@ import { ToastrModule } from 'ngx-toastr';
 import { InicioComponent } from './inicio/inicio.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { DisenoGraficoComponent } from './diseno-grafico/diseno-grafico.component';
+import { PinturaComponent } from './pintura/pintura.component';
+import { FotografiaComponent } from './fotografia/fotografia.component';
+import { EsculturaComponent } from './escultura/escultura.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InicioComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AboutUsComponent,
+    DisenoGraficoComponent,
+    PinturaComponent,
+    FotografiaComponent,
+    EsculturaComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,60 @@
+<body class="min-h-screen bg-background">
+    <!-- Header -->
+    <header class="z-50 h-20 w-screen px-4 sticky top-0 flex grow items-center bg-indigo drop-shadow-2xl sm:h-32 lg:px-0">
+        <!-- Logo y nombre de la institucion -->
+        <div class="w-1/3 px-5 flex grow justify-between items-center sm:px-10 lg:px-6 xl:px-10">
+            <div class="flex items-center xl:gap-5">
+                <a href="" class="hidden w-1/3 lg:flex lg:justify-center">
+                    <img draggable="false" class="h-16 w-18 xl:h-20" src="../../assets/Yale_School_of_Art_Logo.png" alt="Logo">
+                </a>
+                <a class="w-2/3 max-w-[200px] text-xl text-white font-bold sm:text-2xl sm:max-w-[250px] md:text-3xl xl:max-w-full xl:text-4xl" href="">Yale School of Art</a>
+            </div>
+            <img class="h-6 w-6 md:mr-4 xl:hidden active:animate-shrink" src="../../assets/hamburger.svg" alt="Menu" *ngIf="!menuMovil" (click)="menuMovil = !menuMovil">
+            <img class="h-6 w-6 md:mr-4 xl:hidden active:animate-shrink" src="../../assets/x-close.svg" alt="Menu" *ngIf="menuMovil" (click)="menuMovil = !menuMovil">
+        </div>
+    
+    
+        <!-- Contenedor de links -->
+        <div class="w-2/3 hidden px-40 gap-16 justify-end items-center text-lg text-white font-semibold xl:text-xl xl:flex xl:px-48 xl:gap-24" >
+            <a href="" class="hover:text-darkYellow">Inicio</a>
+            <a href="about" class="text-center hover:text-darkYellow">Sobre Nosotros</a>
+            <a href="#carreras" class="hover:text-darkYellow">Carreras</a>
+            <a href="foro" class="hover:text-darkYellow">Foro</a>
+            <a href="contacto" class="hover:text-darkYellow">Contacto</a>
+        </div>
+    </header>
+    
+    
+    <!-- Contenido -->
+    <div class="h-full w-screen" id="carrera">
+        <!-- Menu de navegacion mobil -->
+        <div class="w-full h-full flex flex-col gap-12 justify-center text-center text-xl text-white font-bold fixed z-20 bottom-0 bg-indigo/80" *ngIf="menuMovil">
+            <a href="" class="active:text-darkYellow">Inicio</a>
+            <a href="about" class="active:text-darkYellow">Sobre Nosotros</a>
+            <a href="#carreras" class="active:text-darkYellow">Carreras</a>
+            <a href="foro" class="active:text-darkYellow">Foro</a>
+            <a href="contacto" class="active:text-darkYellow">Contacto</a>
+        </div>
+        
+        <!-- Descripcion -->
+        <div class="px-10 md:px-14 md:my-2 lg:px-32 xl:px-[11.5rem]">
+            <h1 class="text-2xl pt-4 pb-2 font-bold text-savoyBlue sm:text-4xl md:pt-4 md:pb-0">FOTOGRAFIA</h1>
+            <!-- Descripcion -->
+            <div>
+                <h1 class="text-xl pb-2 font-bold text-savoyBlue sm:text-3xl md:py-4">Descripcion</h1>
+                <p class="text-sm text-justify mb-2 md:text-lg xl:text-xl">
+                    La fotografía es un programa de estudio de dos años que admite diez estudiantes al año. Se proporcionan cuarto oscuro, estudio e instalaciones informáticas. Los estudiantes reciben instrucción técnica en fotografía en blanco y negro y en color, así como en procesos sin plata y producción de imágenes digitales.
+                </p>
+                <p class="text-sm text-justify mb-2 md:text-lg xl:text-xl xl:mb-4">                   
+                    El programa está comprometido con una definición amplia de la fotografía como un medio basado en lentes abierto a una variedad de medios expresivos. Los estudiantes trabajan tanto individualmente como en grupos con profesores y artistas visitantes. Además, un panel de crítica compuesto por profesores y otros artistas o críticos se reúne semanalmente, así como para una revisión final cada trimestre, para discutir el trabajo de los estudiantes.
+                </p>
+            </div>
+
+            <div class="w-full my-4 flex justify-center bg-indigo lg:mt-4 lg:mb-8">
+                <img class="lg:w-3/5 lg:max-h-[480px]" src="../../assets/fotografia_2.jpeg" alt="Diseño Grafico" draggable="false">
+            </div>
+        </div>
+    </div>
+    
+    <app-footer></app-footer>
+</body>

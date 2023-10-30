@@ -28,15 +28,8 @@ export class DatabaseService {
     return this.http.get('https://yale-school-of-art-default-rtdb.firebaseio.com/Usuarios.json');
   }
 
-  // Funcion para obtener link de la imagen
-  cargarImagen(): void {
-    const storage = getStorage();
-    getDownloadURL(ref(storage, "galeria/2023-03-29_15.14.59.png"))
-    .then(url => {
-      return url;
-    })
-    .catch(error => {
-      console.log(error);
-    })
+  getStorageRef() {
+    const storage = getStorage(app);    
+    return storage;
   }
 }

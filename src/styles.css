@@ -4,8 +4,13 @@
 
 * {
   scroll-behavior: smooth;
-  user-select: none;
-  max-width: 100%;
+}
+
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 button {
