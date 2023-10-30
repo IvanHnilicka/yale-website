@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class EsculturaComponent implements OnInit {
   
   ngOnInit(): void {
-    window.scrollTo({top: 10});
+    window.scrollTo({top: 0});
   }
   
   menuMovil = false;

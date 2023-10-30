@@ -7,7 +7,7 @@ import { Component,OnInit } from '@angular/core';
 })
 export class FotografiaComponent implements OnInit {
   ngOnInit(): void {
-    window.scrollTo({top: 10});
+    window.scrollTo({top: 0});
   }
 
   menuMovil = false;

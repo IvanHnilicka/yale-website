@@ -17,6 +17,7 @@ import { PinturaComponent } from './pintura/pintura.component';
 import { FotografiaComponent } from './fotografia/fotografia.component';
 import { EsculturaComponent } from './escultura/escultura.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ContactoComponent } from './contacto/contacto.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     PinturaComponent,
     FotografiaComponent,
     EsculturaComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ContactoComponent
   ],
   imports: [
     BrowserModule,
