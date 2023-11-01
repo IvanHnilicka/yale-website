@@ -11,7 +11,8 @@ module.exports = {
         davysGray: '#525252',
         darkYellow: '#FFC234',
         darkGray: '#1c1e27',
-        background: '#E6E6E6'
+        background: '#e6e6e6',
+        background2: '#d8d8d8'
       }
     },
     animation: {

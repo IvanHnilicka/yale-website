@@ -8,6 +8,7 @@ import { FotografiaComponent } from './fotografia/fotografia.component';
 import { EsculturaComponent } from './escultura/escultura.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { ForoComponent } from './foro/foro.component';
 
 const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'fotografia', component: FotografiaComponent },
   { path: 'escultura', component: EsculturaComponent },
   { path: 'contacto', component: ContactoComponent },
+  { path: 'foro', component: ForoComponent },
   { path: '404', component: NotFoundComponent},
   { path: '**', redirectTo: '404' },
 ];
