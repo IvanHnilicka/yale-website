@@ -20,6 +20,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { ForoComponent } from './foro/foro.component';
 import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { LoginComponent } from './login/login.component';
     NotFoundComponent,
     ContactoComponent,
     ForoComponent,
-    LoginComponent
+    LoginComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,

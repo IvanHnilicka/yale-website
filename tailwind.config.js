@@ -13,6 +13,9 @@ module.exports = {
         darkGray: '#1c1e27',
         background: '#e6e6e6',
         background2: '#d8d8d8'
+      },
+      backgroundImage: {
+        'login-bg': "url('src/assets/bg-login.jpg')"
       }
     },
     animation: {

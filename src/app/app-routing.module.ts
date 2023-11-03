@@ -9,6 +9,9 @@ import { EsculturaComponent } from './escultura/escultura.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { ForoComponent } from './foro/foro.component';
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
+import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -19,7 +22,10 @@ const routes: Routes = [
   { path: 'escultura', component: EsculturaComponent },
   { path: 'contacto', component: ContactoComponent },
   { path: 'foro', component: ForoComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'registro', component: RegistroComponent },
   { path: '404', component: NotFoundComponent},
+  { path: 'header', component: HeaderComponent},
   { path: '**', redirectTo: '404' },
 ];
 

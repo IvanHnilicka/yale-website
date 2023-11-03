@@ -10,6 +10,4 @@ export class EsculturaComponent implements OnInit {
   ngOnInit(): void {
     window.scrollTo({top: 0});
   }
-  
-  menuMovil = false;
 }

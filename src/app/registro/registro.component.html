@@ -1,0 +1,46 @@
+<body class="min-h-screen bg-background">
+    <!-- Header -->
+    <app-header class="sticky top-0 z-50"></app-header>    
+    
+    <!-- Contenido -->
+    <div class="relative h-full animate-load">
+        <!-- Contenido -->
+        <div class="h-full flex flex-col-reverse md:flex-row">
+            <!-- Formulario -->
+            <form class="w-full px-10 py-4 flex flex-col md:justify-center md:my-4 lg:w-2/3 lg:px-32 xl:px-44" action="">
+                <h1 class="mb-2 text-4xl text-savoyBlue font-bold">REGISTRO</h1>
+                <label class="text-xl py-1" for="email-input">Nombre(s):</label>
+                <input class="outline-none mb-4 py-1 px-2 rounded-xl focus:border focus:border-solid focus:border-savoyBlue md:text-xl" id="nombre-input" type="email" placeholder="Ingrese su nombre">
+                <!-- Contenedor de inputs nombre y apellidos -->
+                <div class="w-full flex flex-col gap-4 mb-4 md:flex-row">
+                    <div class="w-full lg:w-1/2">
+                        <label class="text-xl py-1" for="email-input">Apellido paterno:</label>
+                        <input class="w-full mt-1 outline-none py-1 px-2 rounded-xl focus:border focus:border-solid focus:border-savoyBlue md:text-xl" id="apellido-p-input" type="email" placeholder="Ingrese su apellido paterno">
+                    </div>
+                    <div class="w-full lg:w-1/2">
+                        <label class="text-xl py-1" for="email-input">Apellido materno:</label>
+                        <input class="w-full mt-1 outline-none py-1 px-2 rounded-xl focus:border focus:border-solid focus:border-savoyBlue md:text-xl" id="apellido-m-input" type="email" placeholder="Ingrese su apellido materno">
+                    </div>
+                </div>
+                <label class="text-xl py-1" for="email-input">Correo electrónico:</label>
+                <input class="outline-none mb-4 py-1 px-2 rounded-xl focus:border focus:border-solid focus:border-savoyBlue md:text-xl" id="email-input" type="email" placeholder="Ingrese su correo electrónico">
+                <label class="text-xl py-1" for="pass-input">Contraseña:</label>
+                <input class="outline-none mb-4 py-1 px-2 rounded-xl focus:border focus:border-solid focus:border-savoyBlue md:text-xl" id="pass-input" type="password" placeholder="Ingrese su contraseña">
+                <label class="text-xl py-1" for="pass-input">Confirmar contraseña:</label>
+                <input class="outline-none py-1 px-2 rounded-xl focus:border focus:border-solid focus:border-savoyBlue md:text-xl" id="conf-pass-input" type="password" placeholder="Ingrese de nuevo su contraseña">
+                <!-- Contenedor de botones -->
+                <div class="w-full py-4 flex justify-center gap-4 xl:gap-6 xl:mt-4">
+                    <button class="w-1/2 md:px-4 py-1 text-savoyBlue font-semibold border border-solid border-savoyBlue rounded-full hover:bg-savoyBlue hover:text-darkYellow active:animate-shrink" type="submit">Crear cuenta</button>
+                    <button class="w-1/2 md:px-4 py-1 text-darkYellow font-semibold border border-solid border-darkYellow rounded-full hover:bg-darkYellow hover:text-white active:animate-shrink" routerLink="/login">Regresar</button>
+                </div>
+            </form>
+
+            <div class="hidden relative h-1/3 w-full md:block md:h-full md:w-1/2 lg:w-1/3 bg-login-bg bg-cover bg-center">
+                <div class="absolute w-full h-full bg-black/50"></div>
+            </div>
+        </div>
+        
+    </div>
+
+    <app-footer></app-footer>
+</body>

@@ -20,7 +20,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
     // Obtiene el link de descarga de las imagenes
     for(let i = 0; i < 5; i++){
       getDownloadURL(ref(storage, `noticias/noticia_${i + 1}.jpg`)).then(url => {
-        //this.imagenes[i].src = url;
+        this.imagenes[i].src = url;
       }).catch((error) => {
         console.log(error);
       })
@@ -36,35 +36,29 @@ export class InicioComponent implements OnInit, AfterViewInit {
 
   menuMovil = false;
 
-  cerrarMenuMovil() {
-    setTimeout(() => {
-      this.menuMovil = false;
-    }, 100);
-  }
-
 
   // Arreglo que guarda el link de las imagenes
   carrusel: HTMLImageElement[] = [];
   
   imagenes = [
     {
-      src: 'https://firebasestorage.googleapis.com/v0/b/yale-school-of-art.appspot.com/o/noticias%2Fnoticia_1.jpg?alt=media&token=c2e08142-77e5-426d-a457-b291740a7d49',
+      src: '',
       description: 'Visita la galería de Arte ubicada dentro de la Universidad'
     },
     {
-      src: 'https://firebasestorage.googleapis.com/v0/b/yale-school-of-art.appspot.com/o/noticias%2Fnoticia_2.jpg?alt=media&token=b2bcf7a9-e77c-460e-b57f-cc082a027e4a',
+      src: '',
       description: 'Te invitamos a la conferencia de Arte Moderno con Alejandro Vargas'
     },
     {
-      src: 'https://firebasestorage.googleapis.com/v0/b/yale-school-of-art.appspot.com/o/noticias%2Fnoticia_3.jpg?alt=media&token=f0f9d8a1-2249-4ded-a5d5-2fd968bb6608',
+      src: '',
       description: 'Publica tus obras en el foro oficial para compartir tu arte'
     },
     {
-      src: 'https://firebasestorage.googleapis.com/v0/b/yale-school-of-art.appspot.com/o/noticias%2Fnoticia_4.jpg?alt=media&token=91151a39-10ea-4be0-93e0-6e4d774461f6',
+      src: '',
       description: 'Universidad se prepara para cierre de ciclo escolar'
     },
     {
-      src: 'https://firebasestorage.googleapis.com/v0/b/yale-school-of-art.appspot.com/o/noticias%2Fnoticia_5.jpg?alt=media&token=21741bce-1f0f-4655-b5ff-629b911e4f1a',
+      src: '',
       description: 'Invita a tus amigos y familiares al curso de pintura para principiantes'
     },
   ]
