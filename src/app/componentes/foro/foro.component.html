@@ -1,0 +1,96 @@
+<body class="min-h-screen bg-background">
+    <!-- Header -->
+    <app-header class="sticky top-0 z-50"></app-header>    
+    
+    <!-- Contenido -->
+    <div class="h-full animate-load">
+        <!-- Subheader -->
+        <header class="px-6 py-4 bg-black/10 md:pl-14 lg:pl-32 xl:px-44 xl:py-6">
+            <!-- Header sin usuario loggeado -->
+            <div class="w-full px-3 flex items-center justify-between md:px-1" *ngIf="!user">
+                <h1 class="w-full pr-4 text-sm text-davysGray/70 font-semibold md:text-base lg:text-lg">Inicia sesión para compartir tus proyectos</h1>
+                <img class="h-5 w-5 md:hidden" src="../../assets/user.svg" alt="Login" routerLink="/login">
+                <button class="hidden h-fit w-fit ml-2 py-1 rounded-full text-white font-bold bg-indigo md:block md:mr-4 md:px-6 md:text-lg md:h-10 md:ml-0 xl:text-lg xl:w-28 xl:mr-0 hover:text-darkYellow hover:text-xl active:animate-shrink transition-all" routerLink="/login">Login</button>
+            </div>
+
+            <!-- Header con usuario loggeado -->
+            <div class="px-3 flex items-center md:px-1" *ngIf="user">
+                <div class="w-full flex items-center justify-between" *ngIf="user">
+                    <h1 class="text-sm text-davysGray/70 font-semibold md:text-base xl:text-lg" >Bienvenido {{ user }}</h1>
+                    <div class="flex gap-6">
+                        <img class="h-5 w-5 md:mr-10 md:hidden active:animate-shrink" src="../../assets/add-icon.svg" alt="Publicar" routerLink="/publicar">                
+                        <img class="h-5 w-5 md:mr-10 md:hidden active:animate-shrink" src="../../assets/login-icon.svg" alt="Logout" (click)="logout()">
+                    </div>
+                </div>
+    
+                <div class="hidden w-full px-4 grow justify-end gap-4 md:flex">
+                    <!-- Boton publicar -->
+                    <button class="hidden h-fit w-fit ml-2 py-1 rounded-full text-white font-bold bg-indigo md:block md:px-6 md:text-lg md:h-10 md:ml-0 xl:text-lg xl:w-32 hover:text-darkYellow hover:text-xl active:animate-shrink transition-all" routerLink="/publicar">Publicar</button>
+                    
+                    <!-- Boton logout -->
+                    <button class="hidden h-fit w-fit ml-2 py-1 rounded-full text-white font-bold bg-indigo md:block md:px-6 md:text-lg md:h-10 md:ml-0 xl:text-lg xl:w-32 hover:text-darkYellow hover:text-xl active:animate-shrink transition-all" (click)="logout()">Logout</button>
+                </div>
+
+                <!-- Boton getUser -->
+                <!-- <button class="hidden h-fit w-fit ml-2 px-4 py-1 rounded-full text-sm justify-self-end text-white font-bold bg-indigo md:block md:ml-0 md:h-8 xl:h-10 xl:text-lg hover:text-darkYellow hover:text-xl active:animate-shrink" (click)="getUser()">Get User</button> -->
+            </div>
+
+        </header>
+
+        <!-- Feed -->
+        <div class="z-0 flex flex-col items-center gap-4 px-8 my-4 lg:px-32 xl:px-48" *ngIf="publicaciones.length > 0">            
+            <!-- Publicaciones obtenidas de la base de datos -->
+            <div *ngFor="let publicacion of publicaciones" class="max-w-[320px] px-6 flex flex-col bg-white md:max-w-[520px] lg:max-w-[1052px] lg:w-full lg:min-h-[300px] lg:py-2 lg:justify-center">
+
+                <!-- Datos publicacion (movil) -->
+                <div class="w-full py-4 text-sm flex lg:hidden">
+                    <div class="w-2/3 flex flex-col">
+                        <h1 class="font-semibold lg:text-base">{{ publicacion.autor }}</h1>
+                        <h1>{{ publicacion.fecha }}</h1>
+                    </div>
+                    <!-- TODO: cambiar hidden a flex si se implementa funcion de likes -->
+                    <div class="hidden w-1/3 h-fit right-2 justify-end gap-2">
+                        <button><img draggable="false" src="../../assets/like-icon.svg" alt="Heart"></button>
+                        <p>31</p>
+                    </div>
+                </div>
+
+                <!-- Contenedor Imagen y Descripcion -->
+                <div class="flex flex-col lg:flex-row lg:gap-6 lg:grow">
+                    <div class="w-full max-h-[385px] flex justify-center bg-black lg:my-2 lg:w-1/2">
+                        <img src="{{ publicacion.url }}" alt="Publicacion" draggable="false">
+                    </div>
+                    <div class="flex flex-col my-2 lg:w-1/2 lg:justify-between lg:pt-1">
+                        <div class="lg:pr-16">
+                            <h1 class="font-semibold lg:text-xl">{{ publicacion.titulo }}</h1>
+                            <h1 class="text-sm my-1 max-h-[80px] overflow-y-auto md:mb-2 lg:max-h-[280px] lg:my-1 lg:text-lg">                           
+                                {{ publicacion.descripcion }}
+                            </h1>
+                        </div>
+
+                        <!-- Datos publicacion (pantallas grandes) -->
+                        <div class="hidden relative h-12 w-full text-sm gap-1 lg:flex">
+                            <div class="w-2/3 flex flex-col">
+                                <h1 class="font-semibold lg:text-base">{{ publicacion.autor }}</h1>
+                                <h1>{{ publicacion.fecha }}</h1>
+                            </div>
+
+                            <!-- TODO: cambiar hidden a flex si se implementa funcion de likes -->
+                            <div class="hidden w-1/3 h-fit justify-end gap-2">
+                                <button><img draggable="false" src="../../assets/like-icon.svg" alt="Heart"></button>
+                                <p>31</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensaje si no hay publicaciones -->
+        <div class="w-full h-full flex items-center justify-center px-8 lg:px-32 xl:px-48" *ngIf="publicaciones.length === 0">
+            <h1 class="mb-20 text-lg text-black/20 font-semibold md:text-xl">No se encontraron publicaciones en el foro</h1>
+        </div>
+    </div>
+
+    <app-footer></app-footer>
+</body>

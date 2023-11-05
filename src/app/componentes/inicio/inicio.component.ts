@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { getDownloadURL, ref } from 'firebase/storage';
-import { DatabaseService } from '../database.service';
+import { DatabaseService } from '../../servicios/database/database.service';
 
 
 @Component({

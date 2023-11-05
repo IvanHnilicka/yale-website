@@ -1,4 +1,5 @@
 export const environment = {
+    production: true,
     firebase: {
         projectId: "yale-school-of-art",
         appId: "1:279794380397:web:2e35e3bd1dbb0a8b0d1964",
@@ -9,5 +10,4 @@ export const environment = {
         messagingSenderId: "279794380397",
         measurementId: "G-F2R9RSWQ8R"
     },
-    production: true
 };

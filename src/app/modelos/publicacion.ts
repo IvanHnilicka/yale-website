@@ -1,5 +1,8 @@
 export interface Publicacion {
     id: string,
+    titulo: string,
     descripcion: string,
-    img: string
+    url: string,
+    autor: string,
+    fecha: string | null
 }

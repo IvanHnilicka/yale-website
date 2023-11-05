@@ -1,0 +1,53 @@
+<body class="min-h-screen bg-background">
+    <!-- Header -->
+    <app-header class="sticky top-0 z-50"></app-header>    
+    
+    <!-- Contenido -->
+    <div class="h-full px-10 py-8 flex flex-col animate-load md:px-14 xl:px-48">
+        <h1 class="text-2xl text-savoyBlue font-bold xl:text-3xl">Crear publicacion</h1>
+
+        <!-- Input titulo -->
+        <label class="mt-2 mb-1 font-semibold text-xl text-savoyBlue xl:text-2xl" for="titulo-input">Titulo:</label>
+        <input class="mb-4 p-2 outline-none border border-solid focus:border-savoyBlue transition-all" type="text" id="titulo-input" placeholder="Titulo de tu obra" [(ngModel)]="publicacion.titulo" required autocomplete="off">
+
+        <!-- Input descripcion -->
+        <label class="mt-2 mb-1 font-semibold text-xl text-savoyBlue xl:text-2xl" for="descripcion-input">Descripcion:</label>
+        <textarea class="resize-none overflow-auto outline-none mb-4 px-2 py-1 border border-solid focus:border-savoyBlue transition-all" name="descripcion-input" id="descripcion-input" cols="30" rows="4" placeholder="Describe tu obra" 
+        [(ngModel)]="publicacion.descripcion"></textarea>
+
+        <!-- Input imagen -->
+        <input class="w-full overflow-scroll text-sm mb-4 outline-none select-none file:border file:border-solid file:border-savoyBlue file:font-semibold file:mr-2 file:rounded-full file:px-2 file:py-1" 
+        id="foto-input"
+        (change)="uploadImage($event)"
+        type="file"
+        accept="image/png, image/jpeg">
+
+        <!-- Mensaje "cargando archivo" -->
+        <div class="hidden gap-4" id="cargando">
+            <div class="w-5 h-5 border-t-2 border-solid border-savoyBlue rounded-full animate-loadIcon"></div>
+            <div class="mb-4">Cargando archivo...</div>
+        </div>
+
+        <!-- Previsualizacion de imagen -->
+        <div class="w-full mt-2 mb-4 max-h-[385px] flex justify-center bg-black lg:max-h-[420px] lg:w-1/2" *ngIf="publicacion.url">
+            <img class="md:max-h-[300px]" src="{{ publicacion.url }}" alt="Selecciona un archivo" draggable="false">
+        </div>
+
+        <!-- Contenedor botones -->
+        <div class="flex flex-col">
+            <div class="flex gap-4">
+                <!-- Boton publicar -->
+                <button class="w-full font-semibold text-savoyBlue px-4 py-1 border border-solid border-savoyBlue rounded-full lg:w-36 lg:px-0 enabled:hover:bg-savoyBlue hover:text-white enabled:active:animate-shrink disabled:border-darkGray/50 disabled:text-darkGray/50 disabled:cursor-not-allowed"
+                (click)="publicar()" [disabled]="!publicacion.url || !publicacion.titulo || !publicacion.descripcion">Publicar</button>
+                
+                <!-- Boton regresar -->
+                <button class="w-full font-semibold text-darkYellow px-4 py-1 border border-solid border-darkYellow rounded-full lg:w-36 lg:px-0 hover:bg-darkYellow hover:text-white active:animate-shrink " routerLink="/foro">Regresar</button>
+            </div>
+            
+            <p class="text-xs text-black/50 my-2 md:text-sm lg:text-xs" *ngIf="!publicacion.url || !publicacion.titulo || !publicacion.descripcion">*Llena todos los campos para continuar</p>
+        </div>
+    </div>
+
+
+    <app-footer></app-footer>
+</body>
