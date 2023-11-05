@@ -14,6 +14,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo({ top: 0 });
+    let usuario = JSON.parse(localStorage.getItem('loggedUser') || '{}');
+    if(usuario.displayName){
+      this.router.navigateByUrl('/foro');
+    }
   }
 
   loginForm: FormGroup = new FormGroup({
