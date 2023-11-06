@@ -2,8 +2,24 @@
     <!-- Header -->
     <app-header class="sticky top-0 z-50"></app-header>    
     
+    <header class="px-6 py-4 bg-black/10 md:pl-14 lg:pl-32 xl:pl-44 xl:pr-28 xl:py-6">
+        <!-- Header con usuario loggeado -->
+        <div class="px-3 flex items-center md:px-1">
+            <div class="w-full flex items-center justify-between">
+                <h1 class="text-sm text-davysGray/70 font-semibold md:text-base xl:text-lg" >Bienvenido {{ publicacion.autor }}</h1>
+                <div class="hidden gap-4 lg:flex">
+                    <button class="py-1 text-savoyBlue items-center gap-6 md:mr-10 md:border-2 md:border-solid md:border-savoyBlue rounded-full lg:px-4 xl:px-6 hover:bg-savoyBlue hover:text-white active:animate-shrink md:flex" routerLink="/foro">
+                        <h1 class="hidden font-bold md:block md:px-6 lg:px-2 xl:text-lg">Regresar</h1>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
     <!-- Contenido -->
-    <div class="h-full px-10 py-8 flex flex-col animate-load md:px-14 xl:px-48">
+    <div class="h-full px-10 py-8 flex flex-col animate-load md:px-14 lg:px-32 xl:px-48">
+
         <h1 class="text-2xl text-savoyBlue font-bold xl:text-3xl">Crear publicacion</h1>
 
         <!-- Input titulo -->
@@ -23,26 +39,21 @@
         accept="image/png, image/jpeg">
 
         <!-- Mensaje "cargando archivo" -->
-        <div class="hidden gap-4" id="cargando">
-            <div class="w-5 h-5 border-t-2 border-solid border-savoyBlue rounded-full animate-loadIcon"></div>
-            <div class="mb-4">Cargando archivo...</div>
+        <div class="hidden items-center gap-2 mb-4" id="cargando">
+            <img class="w-5 h-5 rounded-full animate-loadIcon" src="../../../assets/spinner-icon.svg" alt="Cargando...">
+            <div class="h-5">Cargando archivo...</div>
         </div>
 
         <!-- Previsualizacion de imagen -->
-        <div class="w-full mt-2 mb-4 max-h-[385px] flex justify-center bg-black lg:max-h-[420px] lg:w-1/2" *ngIf="publicacion.url">
+        <div class="w-full mt-2 mb-4 max-h-[385px] flex justify-center bg-black/10 lg:max-h-[420px] lg:w-1/2" *ngIf="publicacion.url">
             <img class="md:max-h-[300px]" src="{{ publicacion.url }}" alt="Selecciona un archivo" draggable="false">
         </div>
 
         <!-- Contenedor botones -->
-        <div class="flex flex-col">
-            <div class="flex gap-4">
-                <!-- Boton publicar -->
-                <button class="w-full font-semibold text-savoyBlue px-4 py-1 border border-solid border-savoyBlue rounded-full lg:w-36 lg:px-0 enabled:hover:bg-savoyBlue hover:text-white enabled:active:animate-shrink disabled:border-darkGray/50 disabled:text-darkGray/50 disabled:cursor-not-allowed"
-                (click)="publicar()" [disabled]="!publicacion.url || !publicacion.titulo || !publicacion.descripcion">Publicar</button>
-                
-                <!-- Boton regresar -->
-                <button class="w-full font-semibold text-darkYellow px-4 py-1 border border-solid border-darkYellow rounded-full lg:w-36 lg:px-0 hover:bg-darkYellow hover:text-white active:animate-shrink " routerLink="/foro">Regresar</button>
-            </div>
+        <div class="flex flex-col gap-1 items-center md:flex-row md:gap-4">
+            <!-- Boton publicar -->
+            <button class="w-full font-semibold text-savoyBlue px-4 py-1 border border-solid border-savoyBlue rounded-full lg:py-2 md:w-36 lg:px-0 enabled:hover:bg-savoyBlue hover:text-white enabled:active:animate-shrink disabled:border-darkGray/50 disabled:text-darkGray/50 disabled:cursor-not-allowed"
+            (click)="publicar()" [disabled]="!publicacion.url || !publicacion.titulo || !publicacion.descripcion">Publicar</button>
             
             <p class="text-xs text-black/50 my-2 md:text-sm lg:text-xs" *ngIf="!publicacion.url || !publicacion.titulo || !publicacion.descripcion">*Llena todos los campos para continuar</p>
         </div>

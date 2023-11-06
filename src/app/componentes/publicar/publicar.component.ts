@@ -3,7 +3,6 @@ import { Publicacion } from 'src/app/modelos/publicacion';
 import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
 import { DatabaseService } from 'src/app/servicios/database/database.service';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/servicios/auth/auth.service';
 
 @Component({
   selector: 'app-publicar',
@@ -11,21 +10,24 @@ import { AuthService } from 'src/app/servicios/auth/auth.service';
   styleUrls: ['./publicar.component.css']
 })
 export class PublicarComponent implements OnInit {
-  constructor(private storage: Storage, private db: DatabaseService, private authService: AuthService, private router: Router){ }
+  constructor(private storage: Storage, private db: DatabaseService, private router: Router){ }
 
   ngOnInit(): void {
     window.scrollTo({ top: 0 });
     let usuario = JSON.parse(localStorage.getItem('loggedUser') || '{}');
     this.publicacion.autor = usuario.displayName;
+    this.publicacion.uid = usuario.uid;
   }
 
   publicacion : Publicacion = {
     id: this.crearId(),
+    uid: '',
     titulo: '',
     descripcion: '',
     url: '',
     autor: '',
-    fecha: null
+    fecha: this.obtenerFecha(),
+    hora: this.obtenerHora(),
   }
 
   file: any;
@@ -63,11 +65,11 @@ export class PublicarComponent implements OnInit {
   }
 
   publicar(){
-    this.publicacion.fecha = this.obtenerFecha();
-
-    this.db.publicarForo(this.publicacion).subscribe(res => {
+    this.db.publicarForo(this.publicacion)
+    .then(() => {
       this.router.navigateByUrl('foro');
-    });
+    })
+    .catch(error => console.log(error));
   }
 
   obtenerFecha() {
@@ -75,5 +77,10 @@ export class PublicarComponent implements OnInit {
     let datosFecha = fecha.toDateString().split(' ');
     let formattedDate = `${datosFecha[2]}/${datosFecha[1]}/${datosFecha[3]}`;
     return formattedDate;
+  }
+
+  obtenerHora(){
+    let fecha = new Date();
+    return fecha.getTime();
   }
 }

@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/foro');
     })
     .catch(error => {
-      this.toaster.error("Verifique sus credenciales", 'ERROR');
+      this.toaster.error("Correo o contraseña incorrectos", 'ERROR');
       this.loginForm.controls['password'].setValue('');
       console.log(error);
     });

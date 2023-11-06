@@ -27,7 +27,8 @@ export class RegistroComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({
     userName: new FormControl('', [Validators.required]),
     correo: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)])
+    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    passwordConf: new FormControl('', [Validators.required, Validators.minLength(8)]),
   })
 
 
@@ -44,6 +45,12 @@ export class RegistroComponent implements OnInit {
       return;
     }
 
+    // Validacion de confirmacion de contraseña
+    if(this.registerForm.controls['password'].value != this.registerForm.controls['passwordConf'].value){
+      this.toaster.error('Contraseñas no coinciden', 'ERROR');
+      return;
+    }
+
     let userName = this.registerForm.controls['userName'].value;
     let correo = this.registerForm.controls['correo'].value;
     let contraseña = this.registerForm.controls['password'].value;
@@ -51,10 +58,23 @@ export class RegistroComponent implements OnInit {
     this.authService.register(correo, contraseña)
     .then(response => {
       console.log(response);
-      this.authService.login(correo, contraseña);
-      this.authService.setNombre(userName);
-      this.router.navigateByUrl('/foro');
+      this.authService.login(correo, contraseña)
+      .then(response => {
+        this.authService.setNombre(userName)
+        ?.then(() => {
+          localStorage.setItem('loggedUser', JSON.stringify(response.user));
+          this.router.navigateByUrl('/foro');
+        })
+        .catch(error => console.log(error));
+      })
+      .catch(error => console.log(error));
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      if(error.message = 'Firebase: Error (auth/email-already-in-use).'){
+        this.toaster.error('El correo ingresado ya se encuentra registrado', 'ERROR');
+      }else{
+        console.log(error);
+      }
+    });
   }
 }

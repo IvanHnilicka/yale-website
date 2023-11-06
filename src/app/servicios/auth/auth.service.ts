@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   loginGoogle(){
-    return signInWithPopup(this.auth, new GoogleAuthProvider());
+    return signInWithPopup(this.auth, new GoogleAuthProvider().setCustomParameters({prompt: 'select_account'}));
   }
 
   logout(){
@@ -45,5 +45,11 @@ export class AuthService {
     }
     
     return;
+  }
+
+  getCurrentUser(){
+    const user = this.auth.currentUser;
+    console.log(user);
+    return user;
   }
 }

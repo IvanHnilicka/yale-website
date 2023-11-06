@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Publicacion } from 'src/app/modelos/publicacion';
 import { AuthService } from 'src/app/servicios/auth/auth.service';
 import { DatabaseService } from 'src/app/servicios/database/database.service';
 
@@ -18,17 +19,20 @@ export class ForoComponent implements OnInit {
     window.scrollTo({ top: 0 });
     this.cargarPublicaciones();
     this.user = JSON.parse(localStorage.getItem('loggedUser') || '{}').displayName;
+
+    this.authService.getCurrentUser();
   }
   
   menuMovil = false;
-  publicaciones: any[] = [];
+  publicaciones: Publicacion[] = [];
 
   cargarPublicaciones(){
-    // Mapea las publicaciones al arreglo de publicaciones
-    this.db.getPosts().subscribe((res: any) => {
+    this.db.getPosts().subscribe(res => {
       if(res){
         this.publicaciones = Object.values(res);
-        this.publicaciones.reverse();
+        this.publicaciones.sort((a, b) => {
+          return b.hora - a.hora;
+        })
       }
     });
   }
@@ -37,16 +41,5 @@ export class ForoComponent implements OnInit {
     this.authService.logout();
     localStorage.removeItem('loggedUser');
     this.router.navigateByUrl('/login');
-  }
-
-  getUser(){
-    let user = JSON.parse(localStorage.getItem('loggedUser') || '{}');
-    console.log(user);
-    console.log('Nombre: ', this.user);
-  }
-
-  verificarCorreo(){
-    this.authService.verificarCorreo();
-    this.toaster.success('Se ha enviado un mensaje de verificacion a tu correo', 'Verificacion pendiente');
   }
 }

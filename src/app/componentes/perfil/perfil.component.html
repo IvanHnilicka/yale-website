@@ -1,0 +1,116 @@
+<body class="relative min-h-screen bg-background">
+    <!-- Header -->
+    <app-header class="sticky top-0 z-50"></app-header>    
+    
+    <!-- Contenido -->
+    <div class="h-full animate-load">
+        <!-- Subheader -->
+        <header class="px-6 py-4 bg-black/10 md:pl-14 lg:pl-32 xl:pl-44 xl:pr-28 xl:py-6">
+            <div class="px-2 flex items-center md:px-1">
+                <div class="w-full flex items-center justify-between">
+                    <h1 class="text-sm text-davysGray/70 font-semibold md:text-base xl:text-lg" >Bienvenido {{ user }}</h1>
+                    <!-- Contenedor botones -->
+                    <div class="flex py-1 md:gap-4 md:px-10">                        
+                        <button class="hidden px-2 py-1 text-savoyBlue items-center gap-6 md:border-2 md:border-solid md:border-savoyBlue rounded-full md:flex md:px-6 lg:px-8 md:hover:bg-savoyBlue hover:text-white active:animate-shrink" routerLink="/foro">
+                            <h1 class="hidden font-bold md:block xl:text-lg">Regresar</h1>    
+                            <img class="h-5 w-5 cursor-pointer md:h-7 md:w-7 active:animate-shrink md:hidden" src="../../assets/logout-icon.svg" alt="Logout" (click)="modalLogout = true">
+                        </button>
+
+                        <button class="px-2 py-1 text-[#ce0d0d] flex items-center gap-6 md:border-2 md:border-solid md:border-[#ce0d0d] rounded-full lg:px-4 md:hover:bg-[#ce0d0d] hover:text-white active:animate-shrink">
+                            <h1 class="hidden font-bold md:block xl:text-lg" (click)="logout()">Cerrar sesion</h1>    
+                            <img class="h-5 w-5 cursor-pointer md:h-7 md:w-7 active:animate-shrink md:hidden" src="../../assets/logout-icon.svg" alt="Logout" (click)="modalLogout = true">
+                        </button>
+                    </div>
+                </div>
+            </div>            
+        </header>
+
+
+        <!-- Publicaciones del usuario -->
+        <div class="relative z-0 flex flex-col items-center gap-4 px-8 md:px-16 lg:px-32 xl:px-48" *ngIf="publicacionesUsuario.length > 0">
+            <div class="w-full flex flex-col gap-2 my-2">
+                <h1 class="text-savoyBlue text-lg font-bold self-start md:text-2xl">Tus publicaciones</h1>
+                <div class="w-full border-t border-solid border-savoyBlue"></div>
+            </div>
+
+            <!-- Publicaciones obtenidas de la base de datos -->
+            <div *ngFor="let publicacion of publicacionesUsuario" class="max-w-[320px] px-6 flex flex-col bg-white md:max-w-[520px] lg:max-w-[1052px] lg:w-full lg:min-h-[300px] lg:py-2 lg:justify-center">
+
+                <!-- Datos publicacion (movil) -->
+                <div class="w-full pt-4 text-sm flex lg:hidden">
+                    <div class="w-2/3 flex flex-col">
+                        <h1 class="font-semibold lg:text-base">{{ publicacion.autor }}</h1>
+                        <h1>{{ publicacion.fecha }}</h1>
+                    </div>
+                    <!-- TODO: cambiar hidden a flex si se implementa funcion de likes -->
+                    <div class="flex w-1/3 h-fit right-2 justify-end gap-5">
+                        <!-- <button><img class="w-5 h-5" draggable="false" src="../../assets/edit-icon.svg" alt="Editar"></button> -->
+                        <button><img class="w-5 h-5" draggable="false" src="../../assets/trash-icon.svg" alt="Eliminar" (click)="showModal(publicacion.id, publicacion.titulo)"></button>
+                    </div>
+                </div>
+
+                <!-- Contenedor Imagen y Descripcion -->
+                <div class="flex flex-col py-2 lg:flex-row lg:gap-6 lg:grow">
+                    <div class="w-full flex justify-center bg-black/10">
+                        <img class="h-full max-h-[560px] md:w-[560px] xl:max-w-[480px] xl:min-h-[200px]" src="{{ publicacion.url }}" alt="Imagen" draggable="false">
+                    </div>
+                    <div class="flex flex-col mt-2 lg:w-1/2 lg:justify-between lg:pt-1">
+                        <div class="">
+                            <h1 class="font-semibold lg:text-xl">{{ publicacion.titulo }}</h1>
+                            <h1 class="text-sm my-1 max-h-[80px] overflow-y-auto md:mb-2 lg:max-h-[280px] lg:my-1 lg:text-lg">                           
+                                {{ publicacion.descripcion }}
+                            </h1>
+                        </div>
+
+                        <!-- Datos publicacion (pantallas grandes) -->
+                        <div class="hidden relative h-12 w-full text-sm gap-1 lg:flex lg:items-end">
+                            <div class="w-2/3 flex flex-col">
+                                <h1 class="font-semibold lg:text-base">{{ publicacion.autor }}</h1>
+                                <h1>{{ publicacion.fecha }}</h1>
+                            </div>
+
+                            <!-- Botones para Editar y Eliminar post -->
+                            <div class="flex items-center justify-end w-1/3 h-full gap-6">
+                                <!-- <button><img class="h-5 w-5" draggable="false" src="../../assets/edit-icon.svg" alt="Editar"></button> -->
+                                <button><img class="h-5 w-5" draggable="false" src="../../assets/trash-icon.svg" alt="Eliminar" (click)="showModal(publicacion.id, publicacion.titulo)"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Mensaje si no hay publicaciones -->
+        <div class="w-full h-full flex items-center justify-center px-8 lg:px-32 xl:px-48" *ngIf="publicacionesUsuario.length === 0">
+            <h1 class="mb-20 text-lg text-center text-black/20 font-semibold md:text-xl xl:text-2xl">No se encontraron publicaciones en tu perfil</h1>
+        </div>       
+        
+    </div>
+
+    <!-- Modal eliminar publicacion -->
+    <div class="fixed top-0 z-50 w-full h-screen bg-black/80 flex items-center justify-center px-8 lg:px-32 xl:px-48" *ngIf="modalEliminar">
+        <div class="bg-background2 rounded-3xl p-6 flex flex-col gap-4 md:max-w-[360px] lg:p-8 lg:max-w-[520px] xl:px-20 xl:py-6 xl:gap-8">
+            <h1 class="w-full text-savoyBlue text-center font-semibold md:text-xl md:mb-2 lg:text-2xl">¿Deseas eliminar la publicacion "{{ tituloObra }}"?</h1>
+            <div class="gap-2 flex justify-between md:gap-4">
+                <button class="w-1/2 py-1 font-semibold text-[#ce0d0d] border border-solid border-[#ce0d0d] rounded-full lg:text-lg hover:bg-[#ce0d0d] hover:text-white" (click)="eliminarPost()">Confirmar</button>
+                <button class="w-1/2 py-1 font-semibold text-savoyBlue border border-solid border-savoyBlue rounded-full lg:text-lg hover:bg-savoyBlue hover:text-white" (click)="hideModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal cerrar sesión -->
+    <div class="fixed top-0 z-50 w-full h-screen bg-black/80 flex items-center justify-center px-8 lg:px-32 xl:px-48" *ngIf="modalLogout">
+        <div class="bg-background2 rounded-3xl px-12 py-6 flex flex-col gap-4 md:px-16 md:py-8 lg:py-10 xl:px-20 xl:py-12 xl:gap-8">
+            <h1 class="w-full text-savoyBlue text-lg font-semibold md:text-xl md:mb-2 lg:text-2xl xl:text-3xl">¿Deseas cerrar la sesion?</h1>
+            <div class="gap-2 flex justify-between md:gap-4">
+                <button class="w-1/2 py-1 text-sm font-semibold text-[#ce0d0d] border border-solid border-[#ce0d0d] rounded-full lg:text-lg hover:bg-[#ce0d0d] hover:text-white" 
+                (click)="logout()">Confirmar</button>
+                <button class="w-1/2 py-1 text-sm font-semibold text-savoyBlue border border-solid border-savoyBlue rounded-full lg:text-lg hover:bg-savoyBlue hover:text-white" 
+                (click)="modalLogout = false">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    
+    <app-footer></app-footer>
+</body>

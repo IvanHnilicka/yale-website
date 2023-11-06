@@ -19,10 +19,10 @@ module.exports = {
       }
     },
     animation: {
-      shrink: 'shrink 0.1s',
+      shrink: 'shrink 0.15s',
       fade: 'fade 6s linear infinite',
       load: 'load 1s',
-      loadIcon: 'loadIcon 1s infinite'
+      loadIcon: 'loadIcon 1.5s infinite'
     },
     keyframes: {
       shrink: {
@@ -42,9 +42,6 @@ module.exports = {
       },
       loadIcon: {
         '0%': { transform: 'rotate(0deg)' },
-        '25%': { transform: 'rotate(90deg)' },
-        '50%': { transform: 'rotate(180deg)' },
-        '75%': { transform: 'rotate(270deg)' },
         '100%': { transform: 'rotate(360deg)' },        
       }
     },

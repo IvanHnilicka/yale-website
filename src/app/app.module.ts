@@ -26,6 +26,7 @@ import { ForoComponent } from './componentes/foro/foro.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { PublicarComponent } from './componentes/publicar/publicar.component';
+import { PerfilComponent } from './componentes/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { PublicarComponent } from './componentes/publicar/publicar.component';
     ForoComponent,
     LoginComponent,
     RegistroComponent,
-    PublicarComponent
+    PublicarComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

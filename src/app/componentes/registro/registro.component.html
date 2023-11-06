@@ -7,7 +7,7 @@
         <!-- Contenido -->
         <div class="h-full flex flex-col-reverse md:flex-row">
             <!-- Formulario -->
-            <form class="w-full px-10 py-4 flex flex-col md:justify-center md:my-4 lg:w-2/3 lg:px-32 xl:px-44" action="" [formGroup]="registerForm">
+            <form class="w-full h-full px-10 py-4 flex flex-col justify-center md:my-4 lg:w-2/3 lg:px-32 xl:px-44" action="" [formGroup]="registerForm">
                 <h1 class="mb-2 text-4xl text-savoyBlue font-bold">REGISTRO</h1>
 
                 <!-- Input nombre -->
@@ -34,7 +34,7 @@
                 <label class="text-xl py-1 mt-2" for="conf-pass-input">Confirmar contraseña:</label>
                 <div class="relative w-full">
                     <input class="w-full outline-none py-1 px-2 rounded-xl border border-solid focus:border-savoyBlue md:text-xl transition-all" id="conf-pass-input" 
-                    [type]="mostrarConfirmacion ? 'text' : 'password'" placeholder="Confirme su contraseña">
+                    [type]="mostrarConfirmacion ? 'text' : 'password'" placeholder="Confirme su contraseña" formControlName="passwordConf">
                     <button class="absolute right-3 top-2 md:top-[0.6rem] md:right-4" (click)="mostrarConfirmacion = !mostrarConfirmacion">
                         <img [src]="mostrarConfirmacion ? '../../../assets/eye-slash-icon.svg' : '../../../assets/eye-icon.svg'" alt="Mostrar" draggable="false">
                     </button>
