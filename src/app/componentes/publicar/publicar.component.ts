@@ -28,6 +28,7 @@ export class PublicarComponent implements OnInit {
     autor: '',
     fecha: this.obtenerFecha(),
     hora: this.obtenerHora(),
+    likes: [],
   }
 
   file: any;

@@ -27,6 +27,9 @@ import { LoginComponent } from './componentes/login/login.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { PublicarComponent } from './componentes/publicar/publicar.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
+import { ResetPassComponent } from './componentes/reset-pass/reset-pass.component';
+import { NewPassComponent } from './componentes/new-pass/new-pass.component';
+import { PassResetedComponent } from './componentes/pass-reseted/pass-reseted.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { PerfilComponent } from './componentes/perfil/perfil.component';
     LoginComponent,
     RegistroComponent,
     PublicarComponent,
-    PerfilComponent
+    PerfilComponent,
+    ResetPassComponent,
+    NewPassComponent,
+    PassResetedComponent
   ],
   imports: [
     BrowserModule,

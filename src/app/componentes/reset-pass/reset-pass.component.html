@@ -1,0 +1,34 @@
+<body class="min-h-screen bg-background">
+    <!-- Header -->
+    <app-header class="sticky top-0 z-50"></app-header>    
+    
+    <!-- Contenido -->
+    <div class="relative h-full animate-load">
+        <!-- Contenido -->
+        <div class="h-full flex flex-col-reverse md:flex-row">
+            <!-- Formulario -->
+            <form class="w-full h-full px-10 py-4 my-4 flex flex-col md:justify-center md:py-0 lg:w-2/3 lg:px-32 xl:px-44" [formGroup]="emailForm">
+                <h1 class="mb-2 text-4xl text-savoyBlue font-bold">Restablecer contraseña</h1>
+                
+                <!-- Input correo -->
+                <label class="text-xl py-2" for="email-input">Correo electrónico:</label>
+                <input class="outline-none mb-2 py-1 px-2 rounded-xl border border-solid focus:border-savoyBlue md:text-xl md:mb-4 transition-all" id="email-input" type="email" placeholder="Ingrese su correo electrónico" [ngClass]="emailForm.controls['correo'].hasError('email') ? 'border-red-500' : 'border-transparent'" formControlName="correo" autocomplete="off">
+
+                <!-- Contenedor de botones -->
+                <div class="w-full py-4 flex justify-center gap-4 xl:gap-6">
+                    <button class="w-1/2 md:px-4 py-1 text-savoyBlue font-semibold border border-solid border-savoyBlue rounded-full enabled:hover:bg-savoyBlue enabled:hover:text-darkYellow enabled:active:animate-shrink disabled:border-darkGray disabled:text-darkGray disabled:opacity-20 disabled:cursor-not-allowed" type="submit" 
+                    (click)="onSubmit()" [disabled]="emailForm.invalid">Enviar correo</button>
+                    <button class="w-1/2 h-full md:px-4 py-1 text-darkYellow font-semibold border border-solid border-darkYellow rounded-full hover:drop-shadow-md hover:bg-darkYellow hover:text-white active:animate-shrink" routerLink="/login">Regresar</button>
+                </div>
+            </form>
+
+            <!-- Imagen universidad -->
+            <div class="relative h-1/3 md:h-full md:w-1/2 bg-login-bg bg-cover bg-center">
+                <div class="absolute w-full h-full bg-black/50"></div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <app-footer></app-footer>
+</body>

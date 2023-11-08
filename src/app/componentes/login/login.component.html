@@ -19,15 +19,14 @@
                 <div class="relative w-full">
                     <input class="w-full outline-none mb-1 py-1 px-2 rounded-xl border border-solid focus:border-savoyBlue md:text-xl transition-all" id="pass-input" 
                     [type]="mostrarPassword ? 'text' : 'password'" placeholder="Ingrese su contraseña" formControlName="password">
-                    <button class="absolute right-3 top-2 md:top-[0.7rem] md:right-4" (click)="mostrarPassword = !mostrarPassword">
-                        <img [src]="mostrarPassword ? '../../../assets/eye-slash-icon.svg' : '../../../assets/eye-icon.svg'" alt="Mostrar" draggable="false">
-                    </button>
+                    <img class="absolute right-3 top-2 md:top-[0.7rem] md:right-4" (click)="mostrarPassword = !mostrarPassword" 
+                    [src]="mostrarPassword ? '../../../assets/eye-slash-icon.svg' : '../../../assets/eye-icon.svg'" alt="Mostrar" draggable="false">
+                    <p class="mt-2 px-2 text-sm text-savoyBlue/60 underline cursor-pointer hover:text-savoyBlue" routerLink="/password-reset">Olvidaste tu contraseña</p>
                 </div>
 
                 <!-- Contenedor de botones -->
-                <div class="w-full py-4 flex justify-center gap-4 xl:gap-6 xl:mt-4">
-                    <button class="w-1/2 md:px-4 py-1 text-savoyBlue font-semibold border border-solid border-savoyBlue rounded-full enabled:hover:bg-savoyBlue enabled:hover:text-darkYellow enabled:active:animate-shrink disabled:border-darkGray disabled:text-darkGray disabled:opacity-20 disabled:cursor-not-allowed" type="submit" 
-                    (click)="onSubmit()" [disabled]="loginForm.invalid">Iniciar sesión</button>
+                <div class="w-full py-4 flex justify-center gap-4 xl:gap-6">
+                    <button class="w-1/2 md:px-4 py-1 text-savoyBlue font-semibold border border-solid border-savoyBlue rounded-full enabled:hover:bg-savoyBlue enabled:hover:text-darkYellow enabled:active:animate-shrink disabled:border-darkGray disabled:text-darkGray disabled:opacity-20 disabled:cursor-not-allowed" type="submit" (click)="onSubmit()" [disabled]="loginForm.invalid">Iniciar sesión</button>
                     <button class="w-1/2 h-full md:px-4 py-1 text-darkYellow font-semibold border border-solid border-darkYellow rounded-full hover:drop-shadow-md hover:bg-darkYellow hover:text-white active:animate-shrink" routerLink="/registro">Registrarse</button>
                 </div>
 

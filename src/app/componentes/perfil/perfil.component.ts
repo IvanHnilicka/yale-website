@@ -55,8 +55,10 @@ export class PerfilComponent {
     }
 
     // Recarga la pagina
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['/perfil']);
-    });
+    setTimeout(() => {
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/perfil']);
+      });
+    }, 500);
   }
 }

@@ -14,9 +14,9 @@
             </div>
 
             <!-- Header con usuario loggeado -->
-            <div class="px-3 flex items-center md:px-1" *ngIf="user">
+            <div class="pl-3 pr-1 flex items-center md:px-1" *ngIf="user">
                 <div class="w-full flex items-center justify-between" *ngIf="user">
-                    <h1 class="text-sm text-davysGray/70 font-semibold md:text-base xl:text-lg" >Bienvenido {{ user }}</h1>
+                    <h1 class="text-sm text-davysGray/70 font-semibold md:text-base xl:text-lg" >Bienvenido {{ user.displayName }}</h1>
                     <div class="flex gap-4">
                         <button class="py-1 text-savoyBlue items-center gap-6 lg:border-2 lg:border-solid lg:border-savoyBlue rounded-full lg:px-4 xl:px-6 lg:hover:bg-savoyBlue hover:text-white active:animate-shrink lg:flex" routerLink="/publicar">
                             <h1 class="hidden font-bold lg:block md:px-6 lg:px-4 xl:text-lg">Publicar</h1>    
@@ -40,7 +40,7 @@
         <!-- Feed -->
         <div class="z-0 flex flex-col items-center gap-4 px-8 my-4 lg:px-32 xl:px-48" *ngIf="publicaciones.length > 0">            
             <!-- Publicaciones obtenidas de la base de datos -->
-            <div *ngFor="let publicacion of publicaciones" class="max-w-[320px] px-6 flex flex-col bg-white md:max-w-[520px] lg:max-w-[1052px] lg:w-full lg:min-h-[300px] lg:py-2 lg:justify-center">
+            <div *ngFor="let publicacion of publicaciones; index as i" class="max-w-[320px] px-6 flex flex-col bg-white md:max-w-[520px] lg:max-w-[1052px] lg:w-full lg:min-h-[300px] lg:py-2 lg:justify-center">
 
                 <!-- Datos publicacion (movil) -->
                 <div class="w-full pt-4 text-sm flex lg:hidden">
@@ -48,10 +48,11 @@
                         <h1 class="font-semibold lg:text-base">{{ publicacion.autor }}</h1>
                         <h1>{{ publicacion.fecha }}</h1>
                     </div>
-                    <!-- TODO: cambiar hidden a flex si se implementa funcion de likes -->
-                    <div class="hidden w-1/3 h-fit right-2 justify-end gap-2">
-                        <button><img draggable="false" src="../../assets/like-icon.svg" alt="Heart"></button>
-                        <p>31</p>
+                    <!-- TODO: Implementar funcion de likes -->
+                    <div class="flex w-1/3 h-fit right-2 justify-end gap-2">
+                        <button class="active:animate-shrink" *ngIf="!publicacion.likes || (user && !publicacion.likes.includes(user.uid)) || !user" (click)="likePost(publicacion.id, i)"><img class="w-full h-full" draggable="false" src="../../assets/like-icon.svg" alt="Heart"></button>
+                        <button class="active:animate-shrink" *ngIf="publicacion.likes && user && publicacion.likes.includes(user.uid)" (click)="unlikePost(publicacion.id, i)"><img class="w-full h-full" draggable="false" src="../../assets/liked-icon.svg" alt="Heart"></button>
+                        <p>{{ getLikes(i) }}</p>
                     </div>
                 </div>
 
@@ -69,16 +70,18 @@
                         </div>
 
                         <!-- Datos publicacion (pantallas grandes) -->
-                        <div class="hidden relative h-full w-full text-sm gap-1 lg:flex lg:items-end">
+                        <div class="hidden relative w-full text-sm gap-1 lg:flex lg:items-end">
                             <div class="w-2/3 flex flex-col">
                                 <h1 class="font-semibold lg:text-base">{{ publicacion.autor }}</h1>
                                 <h1>{{ publicacion.fecha }}</h1>
                             </div>
 
-                            <!-- TODO: cambiar hidden a flex si se implementa funcion de likes -->
-                            <div class="hidden w-1/3 h-fit justify-end gap-2">
-                                <button><img draggable="false" src="../../assets/like-icon.svg" alt="Heart"></button>
-                                <p>31</p>
+                            <!-- TODO: Implementar funcion de likes -->
+                            <div class="flex w-1/3 h-full items-start justify-end gap-2">
+                                <button class="py-1 active:animate-shrink" *ngIf="!publicacion.likes || (user && !publicacion.likes.includes(user.uid)) || !user" 
+                                (click)="likePost(publicacion.id, i)"><img class="h-full w-full" draggable="false" src="../../assets/like-icon.svg" alt="Heart"></button>
+                                <button class="py-1 active:animate-shrink" *ngIf="publicacion.likes && user && publicacion.likes.includes(user.uid)" (click)="unlikePost(publicacion.id, i)"><img class="h-full w-full" draggable="false" src="../../assets/liked-icon.svg" alt="Heart"></button>
+                                <p class="text-base">{{ getLikes(i) }}</p>
                             </div>
                         </div>
                     </div>

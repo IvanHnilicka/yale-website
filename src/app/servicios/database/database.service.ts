@@ -39,27 +39,32 @@ export class DatabaseService {
   getPostsUsuario(){
     // Obtiene el uid del usuario loggeado
     let postsUsuario : Publicacion[] = [];
-    let user = JSON.parse(localStorage.getItem('loggedUser') || '{}');
-    let uid = user.uid;
+    let user = this.authService.getCurrentUser();
 
-    this.getPosts().subscribe(res => {
-      if(res){
-        let posts = Object.values(res);
-
-        // Ordena los posts en orden descendente segun la hora en que se publicaron
-        posts.sort((a: Publicacion, b: Publicacion) => {
-          return b.hora - a.hora;
-        })
+    if(user){
+      let uid = user.uid;
   
-        posts.forEach((post: Publicacion) => {
-          if(post.uid == uid){
-            postsUsuario.push(post);
-          }
-        })
-      }
-    })
+      this.getPosts().subscribe(res => {
+        if(res){
+          let posts = Object.values(res);
+  
+          // Ordena los posts en orden descendente segun la hora en que se publicaron
+          posts.sort((a: Publicacion, b: Publicacion) => {
+            return b.hora - a.hora;
+          })
+    
+          posts.forEach((post: Publicacion) => {
+            if(post.uid == uid){
+              postsUsuario.push(post);
+            }
+          })
+        }
+      })
+  
+      return postsUsuario;
+    }
 
-    return postsUsuario;
+    return [];
   }
 
 
@@ -74,6 +79,10 @@ export class DatabaseService {
     return this.http.delete(`https://yale-school-of-art-default-rtdb.firebaseio.com/foro/${idPost}.json`).subscribe(res => {
       console.log(res);
     });
+  }
 
+
+  actualizarPost(postId: string, postActualizado: Publicacion){
+    return this.http.put(`https://yale-school-of-art-default-rtdb.firebaseio.com/foro/${postId}.json`, postActualizado).subscribe();
   }
 }

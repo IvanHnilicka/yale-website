@@ -6,5 +6,6 @@ export interface Publicacion {
     url: string,
     autor: string,
     fecha: string | null,
-    hora: number
+    hora: number,
+    likes: string[]
 }

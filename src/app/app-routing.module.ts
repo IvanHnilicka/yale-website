@@ -15,6 +15,9 @@ import { PublicarComponent } from './componentes/publicar/publicar.component';
 
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
+import { ResetPassComponent } from './componentes/reset-pass/reset-pass.component';
+import { NewPassComponent } from './componentes/new-pass/new-pass.component';
+import { PassResetedComponent } from './componentes/pass-reseted/pass-reseted.component';
 
 const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -29,6 +32,9 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'publicar', component: PublicarComponent, ...canActivate(() => redirectUnauthorizedTo(['/login'])) },
   { path: 'perfil', component: PerfilComponent, ...canActivate(() => redirectUnauthorizedTo(['/login'])) },
+  { path: 'password-reset', component: ResetPassComponent },
+  { path: 'new-pass', component: NewPassComponent },
+  { path: 'pass-reseted', component: PassResetedComponent },
   { path: '404', component: NotFoundComponent},
   { path: '**', redirectTo: '404' },
 ];
